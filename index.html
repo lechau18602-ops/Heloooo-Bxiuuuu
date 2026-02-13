@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>💖 I Love You Bxiuuuu Vân Trinh</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      overflow: hidden;
+      background: url("bg.jpg") no-repeat center center/cover;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Overlay phủ đều toàn màn hình - đẹp + sang */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.35),
+        rgba(0,0,0,0.55)
+      );
+      z-index: 0;
+    }
+
+    /* ánh sáng nền */
+    .glow-bg {
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      background: rgba(255, 0, 140, 0.20);
+      border-radius: 50%;
+      filter: blur(140px);
+      animation: glowMove 8s infinite alternate ease-in-out;
+      z-index: 1;
+    }
+
+    @keyframes glowMove {
+      from { transform: translate(-180px, -180px); }
+      to { transform: translate(180px, 180px); }
+    }
+
+    /* Text trung tâm */
+    .center-text {
+      position: absolute;
+      text-align: center;
+      z-index: 10;
+      padding: 22px 26px;
+      max-width: 680px;
+      border-radius: 26px;
+
+      /* glass style đẹp hơn */
+      background: rgba(0, 0, 0, 0.28);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.18);
+      box-shadow: 0 0 30px rgba(255, 0, 150, 0.18);
+
+      animation: pulse 2.2s infinite;
+    }
+
+    .center-text h1 {
+      font-size: 2.1rem;
+      text-shadow: 0 0 25px rgba(255, 0, 150, 0.95);
+      margin-bottom: 10px;
+      color: #ffd6e7;
+      letter-spacing: 1px;
+    }
+
+    .center-text p {
+      font-size: 1.05rem;
+      opacity: 0.98;
+      text-shadow: 0 0 14px rgba(0, 0, 0, 0.85);
+      color: #fff6e6;
+      line-height: 1.7;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.92; }
+      50% { transform: scale(1.05); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.92; }
+    }
+
+    /* floating text */
+    .floating {
+      position: absolute;
+      font-size: 22px;
+      font-weight: bold;
+      color: rgba(255, 255, 255, 0.95);
+      text-shadow: 0 0 16px rgba(255, 0, 120, 0.95);
+      animation: floatUp linear forwards;
+      user-select: none;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0px) scale(1);
+        opacity: 0;
+      }
+      15% { opacity: 1; }
+      to {
+        transform: translateY(-900px) scale(1.3);
+        opacity: 0;
+      }
+    }
+
+    /* Heart */
+    .heart {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: red;
+      transform: rotate(45deg);
+      animation: heartFloat linear forwards;
+      filter: drop-shadow(0 0 14px rgba(255, 0, 0, 0.9));
+      opacity: 0.95;
+      z-index: 4;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before { top: -9px; left: 0; }
+    .heart::after { left: -9px; top: 0; }
+
+    @keyframes heartFloat {
+      from {
+        transform: translateY(0) rotate(45deg) scale(1);
+        opacity: 0;
+      }
+      15% { opacity: 1; }
+      to {
+        transform: translateY(-950px) rotate(45deg) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    /* Hint */
+    .hint {
+      position: absolute;
+      bottom: 25px;
+      font-size: 0.95rem;
+      opacity: 0.9;
+      z-index: 10;
+      text-shadow: 0 0 12px rgba(0,0,0,0.85);
+      animation: hintBlink 1.5s infinite alternate;
+      color: #fff6e6;
+
+      padding: 8px 14px;
+      border-radius: 18px;
+      background: rgba(0,0,0,0.25);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    @keyframes hintBlink {
+      from { opacity: 0.45; }
+      to { opacity: 1; }
+    }
+
+    /* Nút nhạc */
+    .music-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 20;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 10px 16px;
+      border-radius: 22px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: 0.25s;
+      text-shadow: 0 0 10px rgba(0,0,0,0.6);
+    }
+
+    .music-btn:hover {
+      transform: scale(1.05);
+      background: rgba(255,255,255,0.22);
+    }
+
+    @media (max-width: 600px) {
+      .center-text h1 { font-size: 1.7rem; }
+      .center-text p { font-size: 0.95rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="glow-bg"></div>
+
+  <button class="music-btn" onclick="toggleMusic()">🎵 Bật nhạc</button>
+
+  <div class="center-text">
+    <h1>💖 I LOVE YOU BXIUUU<br>VÂN TRINH 💖</h1>
+    <p>
+      Valentine này… bx dui dẻ nhóoo 🥺🌹<br>
+      Chỉ yêu mỗi bx hui 💞<br>
+      Nhớ bx too muchhh 🥺
+    </p>
+  </div>
+
+  <div class="hint">✨ Chạm màn hình để nổ tim + tự bật nhạc ✨</div>
+
+  <!-- NHẠC NỀN -->
+  <audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const messages = [
+      "Lớp duu bxiuuu 💕",
+      "Bxiuuu Vân Trinh 💖",
+      "My Valentine 🌹",
+      "Mau ăn chóng lớn nhó 😋",
+      "Bé iu của anh 😘",
+      "Chỉ yêu mỗi bx hui 💞",
+      "Nhớ bx too muchhh 🥺",
+      "Bxiuuu 😭💖",
+      "Mãi bên nhau nha ❤️",
+      "Hun cái coaiii 😚",
+      "Đừng bỏ ox nha 🥺",
+      "14/02 💘",
+      "Forever & Always ♾️"
+    ];
+
+    function random(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function createFloatingText() {
+      const text = document.createElement("div");
+      text.className = "floating";
+      text.innerText = messages[Math.floor(Math.random() * messages.length)];
+
+      text.style.left = random(0, window.innerWidth - 160) + "px";
+      text.style.top = random(window.innerHeight - 60, window.innerHeight - 10) + "px";
+      text.style.fontSize = random(18, 34) + "px";
+      text.style.animationDuration = random(3.5, 7) + "s";
+
+      document.body.appendChild(text);
+      setTimeout(() => text.remove(), 8000);
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+
+      heart.style.left = random(0, window.innerWidth - 20) + "px";
+      heart.style.top = random(window.innerHeight - 30, window.innerHeight) + "px";
+
+      heart.style.animationDuration = random(3.5, 7) + "s";
+      heart.style.transform = `rotate(45deg) scale(${random(0.6, 1.4)})`;
+
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 8000);
+    }
+
+    /* bay chữ + tim */
+    setInterval(() => {
+      createFloatingText();
+      if (Math.random() > 0.25) createHeart();
+    }, 280);
+
+    // ===== MUSIC =====
+    const music = document.getElementById("bgMusic");
+    const btn = document.querySelector(".music-btn");
+    let playing = false;
+
+    function playMusic() {
+      if (playing) return;
+
+      music.volume = 0.85;
+
+      music.play().then(() => {
+        playing = true;
+        btn.innerText = "🔊 Tắt nhạc";
+      }).catch(() => {
+        console.log("iPhone chặn autoplay, cần chạm lại.");
+      });
+    }
+
+    function toggleMusic() {
+      if (!playing) {
+        playMusic();
+      } else {
+        music.pause();
+        playing = false;
+        btn.innerText = "🎵 Bật nhạc";
+      }
+    }
+
+    // AUTO PLAY khi người dùng chạm lần đầu
+    document.addEventListener("click", playMusic, { once: true });
+    document.addEventListener("touchstart", playMusic, { once: true });
+
+    // ===== BOOM EFFECT (pháo hoa tim) =====
+    function boomEffect(x, y) {
+      for (let i = 0; i < 20; i++) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "floating";
+
+        const icons = ["💖", "💘", "💗", "💞", "😘", "🌹", "✨", "💕", "💝"];
+        sparkle.innerText = icons[Math.floor(Math.random() * icons.length)];
+
+        sparkle.style.left = x + random(-120, 120) + "px";
+        sparkle.style.top = y + random(-120, 120) + "px";
+        sparkle.style.fontSize = random(18, 55) + "px";
+        sparkle.style.animationDuration = random(1.2, 3.2) + "s";
+
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 4000);
+      }
+    }
+
+    // Nổ pháo hoa khi chạm
+    document.addEventListener("click", (e) => {
+      boomEffect(e.clientX, e.clientY);
+    });
+
+    document.addEventListener("touchstart", (e) => {
+      const touch = e.touches[0];
+      boomEffect(touch.clientX, touch.clientY);
+    });
+
+    // Nổ pháo hoa ngay khi load trang lần đầu (cho xịn)
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        boomEffect(window.innerWidth / 2, window.innerHeight / 2);
+      }, 600);
+    });
+  </script>
+
+</body>
+</html>
